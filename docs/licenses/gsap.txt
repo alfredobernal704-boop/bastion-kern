@@ -1,0 +1,4 @@
+GSAP 3.14.2 and ScrollTrigger
+Copyright GreenSock/Webflow; original library notices retained.
+GSAP Standard No Charge License
+https://gsap.com/community/standard-license/

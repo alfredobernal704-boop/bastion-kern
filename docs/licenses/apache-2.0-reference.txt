@@ -1,0 +1,3 @@
+APACHE LICENSE 2.0 REFERENCE ONLY
+https://www.apache.org/licenses/LICENSE-2.0
+No Apache license is applied to original BASTION-KERN material by this reference. No Apache dependency is claimed for this interface.

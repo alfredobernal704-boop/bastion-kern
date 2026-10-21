@@ -1,0 +1,132 @@
+{
+  "verified_on": "2026-10-20",
+  "notice": "Official information and support resources. This directory does not request or dispatch emergency assistance. For immediate danger, contact the emergency services and civil-protection authority responsible for your location. Availability and eligibility are determined by each organization.",
+  "resources": [
+    {
+      "id": "ifrc",
+      "name": "IFRC National Societies Directory",
+      "category": "humanitarian",
+      "description": "Find the official Red Cross or Red Crescent Society for a country and its published contact details.",
+      "url": "https://www.ifrc.org/national-societies-directory/0",
+      "region": "Global",
+      "contact_url": "https://www.ifrc.org/national-societies-directory/0"
+    },
+    {
+      "id": "icrc",
+      "name": "ICRC Restoring Family Links",
+      "category": "humanitarian",
+      "description": "Official guidance and country contacts for people separated from family during conflict, disaster or migration.",
+      "url": "https://familylinks.icrc.org/directory",
+      "region": "Global",
+      "contact_url": "https://familylinks.icrc.org/directory"
+    },
+    {
+      "id": "wmo",
+      "name": "WMO World Weather Information Service",
+      "category": "weather",
+      "description": "Find participating national meteorological services and links to their official weather information.",
+      "url": "https://worldweather.wmo.int/en/members.html",
+      "region": "Global",
+      "contact_url": "https://worldweather.wmo.int/en/members.html"
+    },
+    {
+      "id": "copernicus",
+      "name": "Copernicus Emergency Management Service",
+      "category": "earth",
+      "description": "Public emergency mapping products for preparedness, response and recovery. Only authorized users can request activations.",
+      "url": "https://mapping.emergency.copernicus.eu/",
+      "region": "Global mapping coverage",
+      "contact_url": "https://mapping.emergency.copernicus.eu/"
+    },
+    {
+      "id": "unosat",
+      "name": "UNITAR United Nations Satellite Centre",
+      "category": "earth",
+      "description": "Official satellite analysis, emergency mapping, training and capacity development resources.",
+      "url": "https://unosat.org/",
+      "region": "Global",
+      "contact_url": "https://unosat.org/"
+    },
+    {
+      "id": "ocha",
+      "name": "OCHA Humanitarian Coordination Resources",
+      "category": "humanitarian",
+      "description": "Reference material about humanitarian coordination, participating agencies and coordination mechanisms.",
+      "url": "https://knowledge.base.unocha.org/wiki/spaces/hpc/pages/5071110152/Coordination",
+      "region": "Global humanitarian operations",
+      "contact_url": "https://knowledge.base.unocha.org/wiki/spaces/hpc/pages/5071110152/Coordination"
+    },
+    {
+      "id": "undrr",
+      "name": "United Nations Office for Disaster Risk Reduction",
+      "category": "humanitarian",
+      "description": "Disaster-risk reduction knowledge, policy, resilience and preparedness resources.",
+      "url": "https://www.undrr.org/",
+      "region": "Global",
+      "contact_url": "https://www.undrr.org/"
+    },
+    {
+      "id": "ready",
+      "name": "FEMA Ready.gov",
+      "category": "humanitarian",
+      "description": "Household and business emergency-preparedness guidance and planning resources.",
+      "url": "https://www.ready.gov/",
+      "region": "United States",
+      "contact_url": "https://www.ready.gov/"
+    },
+    {
+      "id": "cenapred",
+      "name": "Mexico CENAPRED",
+      "category": "humanitarian",
+      "description": "Official disaster-prevention information, educational resources and hazard-monitoring publications.",
+      "url": "https://www.gob.mx/cenapred",
+      "region": "Mexico",
+      "contact_url": "https://www.gob.mx/cenapred"
+    },
+    {
+      "id": "nws",
+      "name": "NOAA National Weather Service",
+      "category": "weather",
+      "description": "Official forecasts, weather warnings and links to hurricane, fire-weather and other specialist services.",
+      "url": "https://www.weather.gov/",
+      "region": "United States and service-specific territories",
+      "contact_url": "https://www.weather.gov/"
+    },
+    {
+      "id": "usgs",
+      "name": "USGS",
+      "category": "provider",
+      "description": "Earthquake records with origin time, location, magnitude and source updates. Preliminary earthquake information can change.",
+      "url": "https://earthquake.usgs.gov/earthquakes/",
+      "region": "Source-specific coverage",
+      "contact_url": "https://answers.usgs.gov/"
+    },
+    {
+      "id": "eonet",
+      "name": "NASA EONET",
+      "category": "provider",
+      "description": "Continuously updated, curated references to natural events and their originating information sources. Coverage is not a complete global incident register.",
+      "url": "https://eonet.gsfc.nasa.gov/",
+      "region": "Source-specific coverage",
+      "contact_url": "https://eonet.gsfc.nasa.gov/contact"
+    },
+    {
+      "id": "gdacs",
+      "name": "GDACS",
+      "category": "provider",
+      "description": "Indicative disaster notifications and potential-impact estimates supporting humanitarian awareness. Official local and national warnings take precedence.",
+      "url": "https://www.gdacs.org/",
+      "region": "Source-specific coverage",
+      "contact_url": "https://www.gdacs.org/About/contactus.aspx"
+    },
+    {
+      "id": "met",
+      "name": "MET Norway",
+      "category": "provider",
+      "description": "Point weather forecasts with model-update and valid times. A forecast describes expected conditions and is not an observed disaster event.",
+      "url": "https://www.met.no/en",
+      "region": "Source-specific coverage",
+      "contact_url": "https://www.met.no/en/contact-us"
+    }
+  ]
+}
