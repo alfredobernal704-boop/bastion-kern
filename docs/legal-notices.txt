@@ -40,5 +40,9 @@ https://gsap.com/community/standard-license/
 https://www.fontshare.com/licenses/itf-ffl
 
 PUBLIC EVALUATION ADDENDUM — 21 October 2026
-This website is hosted by GitHub Pages. The hosting provider processes connection information, such as IP addresses and technical request logs, to deliver and protect the website. No application analytics or session recording has been enabled. A necessary browser session storage entry is cleared when this tab session ends. The published evidence is a dated snapshot and is not automatically refreshed from providers. For privacy requests contact alfredobernal704@gmail.com. GitHub Pages privacy policy.
-GitHub Pages privacy: https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement
+The public files for this preview are stored on GitHub and distributed through rawgit.hack and its Cloudflare network. The hosting provider processes connection information, such as IP addresses and technical request logs, to deliver and protect the website. No application analytics or session recording has been enabled. A necessary browser session storage entry is cleared when this tab session ends. The published evidence is a dated snapshot and is not automatically refreshed from providers. For privacy requests contact alfredobernal704@gmail.com. GitHub privacy policy.
+GitHub privacy: https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement
+
+
+PUBLIC DISTRIBUTION NOTICE — 21 October 2026
+This is a versioned public research preview served through an independent content delivery service. A first-visit destination confirmation may appear. Hosting and bandwidth remain subject to provider terms, limits and availability; no service-level guarantee or zero-cost commitment is made. Service information: https://raw.githack.com/. Cloudflare privacy: https://www.cloudflare.com/privacypolicy/.
