@@ -65,8 +65,7 @@
   "unknown": [
     "Full ownership and assignment chain",
     "Provider logo permissions",
-    "Infrastructure log retention and transfer arrangements",
-    "Font licence archive and full GSAP licence verification"
+    "Infrastructure log retention and transfer arrangements"
   ],
   "unexamined": [
     "Trademark register searches and conflict opinions",
@@ -90,5 +89,20 @@
     "meta_csp": "implemented",
     "static_headers_file": "provided; host enforcement must be verified",
     "server_authorisation": "Sites audience is separate from local evaluation acceptance"
-  }
+  },
+  "contact": "Offentlogspot@gmail.com",
+  "publication_name": "Alfredo Zarate | Welsh",
+  "site_presentation": {
+    "status": "Cooming Soon",
+    "screenshot_scope": "creator-supplied product design, no current-conditions claim",
+    "billing": "none",
+    "fonts": "system",
+    "motion": "CSS transitions; respects reduced-motion"
+  },
+  "retired_from_deployment": [
+    "GSAP",
+    "ScrollTrigger",
+    "Cabinet font files",
+    "historical PDF/Word downloads"
+  ]
 }

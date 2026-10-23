@@ -1,6 +1,6 @@
 # Security contact
 
-Report a reproducible concern privately to alfredobernal704@gmail.com. Include a URL, time and
+Report a reproducible concern privately to Offentlogspot@gmail.com. Include a URL, time and
 minimal description. Never send credentials or another person's private data.
 No bug bounty, penetration-testing authorisation or response SLA is offered.
 

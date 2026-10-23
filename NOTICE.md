@@ -1,11 +1,13 @@
 # Third-party scope
 
-Original first-party rights are distinct from provider data, fonts and libraries.
-See docs/rights-register.json and the linked per-provider notices. Existing GSAP
-and ScrollTrigger headers, historical NASA imagery credits and Fontshare font
-references are retained. No provider logos are represented as authorised.
+Original first-party rights are distinct from provider data, imagery and libraries.
+See docs/rights-register.json and the linked per-provider notices. Historical NASA
+imagery credits remain. Provider logos are not represented as authorised.
 
-The legacy PDF and Word files are retained as dated research documents. Their
-earlier authorship and notices are historical; current evaluation terms are in
-docs/legal.html and docs/legal-notices.txt. Commercial redistribution of packaged
-assets remains pending the listed licence-provenance checks.
+The current deployment uses system fonts and CSS transitions. GSAP, ScrollTrigger,
+Cabinet font files, and the old PDF and Word documents are no longer distributed
+in the current website. Historical Git revisions can retain those earlier files.
+Current evaluation terms are in docs/legal.html and docs/legal-notices.txt.
+Product screenshots are creator-supplied design references; embedded map and
+third-party material retains its own rights. No trademark registration, provider
+partnership or commercial licence clearance is implied by publication.

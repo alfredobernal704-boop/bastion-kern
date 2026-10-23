@@ -1,12 +1,12 @@
 # BASTION-KERN — revisión de derechos y condiciones de lanzamiento
 
-**Fecha:** 22 de octubre de 2026, México. **Nombre de presentación solicitado:** Welsh Alfredo Zarate. **Alcance:** sitio de evaluación, sus recursos publicados y requisitos para futuros productos Guardian y Overwatch. La revisión distingue hechos observados, reglas consultadas y decisiones propuestas. No acredita registros ni sustituye los datos jurídicos que faltan.
+**Fecha:** 22 de octubre de 2026, México. **Nombre de presentación solicitado:** Alfredo Zarate | Welsh. **Alcance:** sitio de evaluación, sus recursos publicados y requisitos para futuros productos Guardian y Overwatch. La revisión distingue hechos observados, reglas consultadas y decisiones propuestas. No acredita registros ni sustituye los datos jurídicos que faltan.
 
 ## Decisión operativa
 
-**GO para revisión privada de la evaluación actual**, conservando el acceso del propietario en Sites y describiendo el funcionamiento real. **NO-GO para cobros, captación de inversión, promesas de vigilancia continua o lanzamiento comercial internacional** hasta cerrar los bloqueos aplicables. Es una decisión de preparación del proyecto, no una resolución administrativa sobre legalidad.
+**GO para presentación informativa pública**, manteniendo visibles las limitaciones del producto y del prototipo. El acceso actual se comprobó como público en la plataforma; esta revisión conserva esa audiencia. **NO-GO para cobros, captación de inversión, promesas de vigilancia continua o lanzamiento comercial internacional** hasta cerrar los bloqueos aplicables. Es una decisión de preparación del proyecto, no una resolución administrativa sobre legalidad.
 
-La pantalla «One more step» observada en la captura pertenece al intermediario raw.githack. No forma parte del HTML del proyecto. Cambiar el título no elimina esa pantalla; alojar los archivos directamente evita depender de ese intermediario. Se solicita para Sites el nombre «Welsh Alfredo Zarate». Esto no retira el repositorio público ni las versiones históricas del servicio anterior.
+La pantalla «One more step» observada en la captura pertenece al intermediario raw.githack. No forma parte del HTML del proyecto. Cambiar el título no elimina esa pantalla; alojar los archivos directamente evita depender de ese intermediario. Se solicita para Sites el nombre «Alfredo Zarate | Welsh». Esto no retira el repositorio público ni las versiones históricas del servicio anterior.
 
 ## 1. Evidencia del producto que se ha revisado
 
@@ -40,7 +40,7 @@ La LFPPI distingue marca y secreto industrial. La exclusividad de marca se obtie
 
 Acciones propuestas: crear un inventario por archivo y autor; conservar originales editables y fechas; identificar recursos generados o asistidos por IA; documentar licencias; firmar acuerdos con colaboradores antes de recibir nuevas contribuciones; consultar los registros de marca de los mercados elegidos. No se ha realizado una búsqueda de anterioridades ni se afirma que las denominaciones estén disponibles.
 
-El nombre público **Welsh Alfredo Zarate** se utiliza según la solicitud. Debe verificarse por separado el nombre jurídico que figurará en contratos, facturas, avisos y solicitudes de registro. OFFENTLOGSPOT no se presenta como sociedad registrada sin comprobarlo. [3]
+El nombre público **Alfredo Zarate | Welsh** se utiliza según la solicitud. Debe verificarse por separado el nombre jurídico que figurará en contratos, facturas, avisos y solicitudes de registro. OFFENTLOGSPOT no se presenta como sociedad registrada sin comprobarlo. [3]
 
 ## 3. Código público, plagio y evidencia
 
@@ -199,3 +199,20 @@ Consultadas el 22 de octubre de 2026. Las páginas dinámicas pueden cambiar. «
 30. [OpenAI: creating ads](https://help.openai.com/en/articles/20001212-creating-ads-for-chatgpt-ads).
 31. [OpenAI: landing-page crawlers](https://help.openai.com/en/articles/20001243-advertiser-guidance-for-allowing-openai-web-crawlers).
 32. [LegalZoom intellectual property services](https://www.legalzoom.com/business/intellectual-property/), descripción de servicios, no dictamen sobre el proyecto.
+
+
+## Actualización de presentación — 22 de octubre de 2026
+
+Contacto único actualizado: **Offentlogspot@gmail.com**. Firma pública: **Alfredo Zarate | Welsh**. Se añade una portada clara con tipografía del sistema, capturas aportadas por el creador y láminas de iconos, siempre identificadas como referencias de diseño. Los documentos PDF/Word anteriores dejan de distribuirse desde esta versión para evitar presentar contactos o avisos históricos como vigentes.
+
+Las membresías se muestran como **Cooming Soon**, sin venta, reserva o cobro habilitado. Se toma como referencia la propuesta más reciente recuperada, del 20 de octubre: Sentinel €7,90/mes y €47,40/año; Guardian €19,90/mes y €119,40/año; Overwatch €89,90/mes y €539,40/año. Son precios de prelanzamiento propuestos, sujetos a confirmación comercial/fiscal. La comparación anual representa el 50% de doce mensualidades mostradas, no una afirmación sobre ventas previas. No se prometen prestaciones que el prototipo no implementa.
+
+BASTION-KERN™ y OFFENTLOGSPOT™ mantienen su carácter de reivindicaciones de marca sin afirmar registro. Las normas sobre obra original, licencias ajenas, excepciones legales y confidencialidad se aplican a cualquier visitante. No se ha aportado evidencia que permita atribuir copia o sabotaje a vecinos o a otra persona determinada. No se añade una acusación a la página.
+
+El titular seleccionó bastion-kern.com para conexión. La plataforma devolvió el dominio pendiente de validación DNS; no se afirma una URL personalizada activa hasta que se complete la comprobación. Este dominio no altera por sí mismo los derechos sobre el repositorio público ni sus copias históricas.
+
+La presentación actual deja de distribuir GSAP/ScrollTrigger, tipografías Cabinet y documentos PDF/Word heredados. Se mantienen las referencias de la revisión inicial como antecedentes; ya no describen componentes cargados por esta publicación.
+
+### Verificación de la revisión de presentación — 23 de octubre de 2026
+
+Se inspeccionaron escritorio y anchos móviles de 360, 390 y 430 px, sin desbordamiento horizontal. Se comprobaron menú, filtros, ampliación de capturas, cambio de idioma, cálculo mensual/anual, centro legal y entrada al prototipo. Todos los enlaces a archivos locales y la sintaxis JavaScript se verificaron. Los 782 registros de evidencias se preservaron byte por byte (SHA-256 ebd68c5cd1102be4f4d25f7bc02d55ab93a42cacf9585f78a459fdddd49c517a). No es una auditoría formal de accesibilidad ni una certificación jurídica.
