@@ -1,18 +1,28 @@
-# Activación de bastion-kern.com
+# Activación de bastion-kern.app
 
-Estado comprobado: 23 de octubre de 2026. Dominio vinculado al sitio, pendiente de validación DNS y certificado TLS. No se ha acreditado acceso al panel DNS desde las conexiones disponibles. No se compró ni transfirió ningún dominio.
+Estado: 23 de octubre de 2026. La página actualizada está publicada en Sites. `bastion-kern.app` está vinculado a ella y pendiente de validación DNS y certificado TLS. Se retiró la solicitud anterior para `bastion-kern.com`; no se compró ni transfirió ningún dominio.
 
-Publicar estos registros únicamente en la zona DNS de bastion-kern.com que controles:
+## Registros para la página actual
 
-| Tipo | Nombre/host relativo | Valor |
-|---|---|---|
-| A | `@` | `162.159.143.30` |
-| A | `@` | `172.66.3.26` |
-| TXT | `_openai-site-verification` | `openai-site-verification=xZsV5ioxJPmiptW2oBH8DSWPa6qJITinCm_AJDVkOZY` |
-| TXT | `_cf-custom-hostname` | `ab3c2b2a-8acf-4091-927e-10bdf765fea1` |
+Estos valores corresponden al alojamiento actual en Sites. No son los registros para publicar la aplicación de Lovable.
 
-Algunos paneles piden el nombre completo para los TXT; en ese caso añade `.bastion-kern.com` al nombre indicado. Para el dominio raíz se usan los dos registros A; no añadas un CNAME de subdominio en `@`.
+| Tipo | Host relativo | Valor | TTL |
+|---|---|---|---|
+| A | `@` | `162.159.143.30` | 300 |
+| A | `@` | `172.66.3.26` | 300 |
+| TXT | `_openai-site-verification` | `openai-site-verification=Fj_tu4m_vJpe7uDJbWhBV3kPLbgy6jmF8ns41_4iNZg` | 300 |
+| TXT | `_cf-custom-hostname` | `3e588b3f-1f31-433d-8a13-c27cfd6e9fee` | 300 |
 
-Conserva los registros MX y los TXT ajenos a esta verificación. Revisa los A/AAAA/CNAME previos que entren en conflicto con el destino web antes de cambiarlos. Este archivo no modifica el correo ni acredita la propiedad del dominio.
+Si el panel pide nombres completos para los TXT, añade `.bastion-kern.app` a cada host TXT. Usa ambos A en `@`. Conserva MX y los TXT ajenos a esta verificación; revisa los registros web A/AAAA/CNAME que puedan entrar en conflicto antes de modificarlos.
 
-Tras publicar los registros, debe completarse la validación del dominio y del certificado. Solo después se podrá usar https://bastion-kern.com como URL pública. Hasta entonces sigue vigente el alojamiento temporal. La validación DNS no equivale a un registro de marca.
+## Si administras el dominio en Lovable
+
+Abre Workspace settings → Workspace domains → Configure junto a bastion-kern.app → DNS records. Se requiere rol de administrador o propietario. Si cambiaste los nameservers a otro proveedor, los registros se editan allí.
+
+Si aparecen A bloqueados creados automáticamente por Lovable, el dominio está conectado a un proyecto: antes de sustituir su destino web debe revisarse ese proyecto. Cambiar el destino enviará los visitantes a la página actualizada de Sites. Los registros A de dos alojamientos distintos no deben mezclarse como forma de conectar ambos sitios.
+
+La documentación de Lovable indica que los registros automáticos se desbloquean al desconectar el dominio del proyecto; no se ha ejecutado esa desconexión ni se ha cambiado ningún DNS desde aquí. El conector disponible no ofrece controles DNS.
+
+Guía oficial: https://docs.lovable.dev/features/custom-domain#add-or-edit-dns-records-for-a-domain-bought-through-lovable
+
+Una vez aplicados los registros, falta verificar dominio y certificado antes de usar https://bastion-kern.app como URL activa. La aplicación de Lovable y la presentación de Sites son proyectos independientes; no se ha migrado ni sobrescrito la aplicación.

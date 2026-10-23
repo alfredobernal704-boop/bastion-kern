@@ -209,7 +209,7 @@ Las membresías se muestran como **Cooming Soon**, sin venta, reserva o cobro ha
 
 BASTION-KERN™ y OFFENTLOGSPOT™ mantienen su carácter de reivindicaciones de marca sin afirmar registro. Las normas sobre obra original, licencias ajenas, excepciones legales y confidencialidad se aplican a cualquier visitante. No se ha aportado evidencia que permita atribuir copia o sabotaje a vecinos o a otra persona determinada. No se añade una acusación a la página.
 
-El titular seleccionó bastion-kern.com para conexión. La plataforma devolvió el dominio pendiente de validación DNS; no se afirma una URL personalizada activa hasta que se complete la comprobación. Este dominio no altera por sí mismo los derechos sobre el repositorio público ni sus copias históricas.
+El titular corrigió el dominio de conexión a bastion-kern.app. La solicitud anterior para bastion-kern.com fue retirada, sin modificar su DNS. La plataforma devolvió el dominio pendiente de validación DNS; no se afirma una URL personalizada activa hasta que se complete la comprobación. Este dominio no altera por sí mismo los derechos sobre el repositorio público ni sus copias históricas.
 
 La presentación actual deja de distribuir GSAP/ScrollTrigger, tipografías Cabinet y documentos PDF/Word heredados. Se mantienen las referencias de la revisión inicial como antecedentes; ya no describen componentes cargados por esta publicación.
 
