@@ -1,0 +1,183 @@
+name: Firebase Test Lab — Android physical Robo smoke
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_run_id:
+        description: 'Successful Android build workflow run ID'
+        required: true
+        type: string
+        default: '41069944385'
+      apk_artifact_id:
+        description: 'APK artifact ID from the selected build run'
+        required: true
+        type: string
+        default: '12984308506'
+      physical_model:
+        description: 'Optional physical Test Lab device ID; leave empty to auto-select one available phone'
+        required: false
+        type: string
+      android_version:
+        description: 'Optional OS version; supply with physical_model'
+        required: false
+        type: string
+  push:
+    branches:
+      - feature/android-first-mobile-foundation-20261030
+    paths:
+      - '.github/workflows/firebase-testlab-android.yml'
+      - 'android/scripts/select_firebase_device.py'
+      - 'android/scripts/test_select_firebase_device.py'
+      - 'android/docs/FIREBASE-TEST-LAB.md'
+
+jobs:
+  validate-config:
+    name: Validate Test Lab device selector (no external test runs)
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test device-selection logic
+        run: python3 -m unittest discover -s android/scripts -p 'test_*.py' -v
+
+  robo-physical:
+    name: Firebase Test Lab physical Android Robo
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    permissions:
+      contents: read
+      actions: read
+      id-token: write
+    concurrency:
+      group: firebase-test-lab-physical
+      cancel-in-progress: false
+    env:
+      FIREBASE_PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
+      GCP_WIF_PROVIDER: ${{ vars.GCP_WIF_PROVIDER }}
+      GCP_SERVICE_ACCOUNT: ${{ vars.GCP_SERVICE_ACCOUNT }}
+      FIREBASE_RESULTS_BUCKET: ${{ vars.FIREBASE_RESULTS_BUCKET }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Firebase project and GitHub OIDC configuration
+        shell: bash
+        env:
+          RUN_ID: ${{ inputs.build_run_id }}
+          ARTIFACT_ID: ${{ inputs.apk_artifact_id }}
+        run: |
+          set -euo pipefail
+          for field in FIREBASE_PROJECT_ID GCP_WIF_PROVIDER GCP_SERVICE_ACCOUNT; do
+            if [[ -z "${!field:-}" ]]; then
+              echo "::error::$field GitHub Actions repository variable is missing."
+              exit 1
+            fi
+          done
+          if [[ ! "$RUN_ID" =~ ^[0-9]+$ || ! "$ARTIFACT_ID" =~ ^[0-9]+$ ]]; then
+            echo "::error::Build run ID and APK artifact ID must be numeric."
+            exit 1
+          fi
+          echo "Test Lab cloud project selected. No cloud credential values displayed."
+
+      - name: Download APK from existing successful Android build
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ inputs.build_run_id }}
+          artifact-ids: ${{ inputs.apk_artifact_id }}
+          path: testlab-apk
+
+      - name: Verify APK input
+        shell: bash
+        id: apk
+        run: |
+          set -euo pipefail
+          mapfile -t files < <(find "$GITHUB_WORKSPACE/testlab-apk" -type f -name '*.apk')
+          if [[ "${#files[@]}" -ne 1 ]]; then
+            echo "::error::Expected exactly one .apk from the selected artifact; found ${#files[@]}."
+            exit 1
+          fi
+          test -s "${files[0]}"
+          echo "path=${files[0]}" >> "$GITHUB_OUTPUT"
+          sha256sum "${files[0]}" > testlab-apk-sha256.txt
+          echo "APK checksum recorded locally; no APK re-signing requested."
+
+      - name: Authenticate GitHub to Google Cloud (OIDC; no long-lived JSON key)
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ env.GCP_WIF_PROVIDER }}
+          service_account: ${{ env.GCP_SERVICE_ACCOUNT }}
+          project_id: ${{ env.FIREBASE_PROJECT_ID }}
+
+      - name: Install Google Cloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Select one available physical Android smartphone
+        id: device
+        env:
+          REQUESTED_MODEL: ${{ inputs.physical_model }}
+          REQUESTED_VERSION: ${{ inputs.android_version }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gcloud firebase test android models list \
+            --project="$FIREBASE_PROJECT_ID" --format=json > testlab-device-catalogue.json
+          python3 android/scripts/select_firebase_device.py \
+            --catalogue testlab-device-catalogue.json \
+            --requested-model "$REQUESTED_MODEL" \
+            --requested-version "$REQUESTED_VERSION" \
+            --output "$GITHUB_OUTPUT" \
+            --summary testlab-device.txt
+
+      - name: Run a 5-minute Robo test on the physical phone
+        shell: bash
+        env:
+          APK_PATH: ${{ steps.apk.outputs.path }}
+          DEVICE_ID: ${{ steps.device.outputs.model }}
+          DEVICE_VERSION: ${{ steps.device.outputs.version }}
+        run: |
+          set -euo pipefail
+          opts=(
+            --project="$FIREBASE_PROJECT_ID"
+            --type=robo
+            --app="$APK_PATH"
+            --device="model=$DEVICE_ID,version=$DEVICE_VERSION,locale=en,orientation=portrait"
+            --timeout=300s
+            --record-video
+            --performance-metrics
+            --results-history-name=BASTION-KERN-Android
+            --results-dir="bastion-kern-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          )
+          if [[ -n "${FIREBASE_RESULTS_BUCKET:-}" ]]; then
+            opts+=(--results-bucket="$FIREBASE_RESULTS_BUCKET")
+          fi
+          gcloud firebase test android run "${opts[@]}" 2>&1 | tee testlab-result.log
+
+      - name: Report the Firebase result location
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Firebase Test Lab — Android Robo"
+            echo ""
+            echo "- Cloud project: ${FIREBASE_PROJECT_ID:-not configured}"
+            echo "- GitHub run: ${GITHUB_RUN_ID}"
+            echo "- Physical device: $(cat testlab-device.txt 2>/dev/null || echo 'not selected')"
+            echo "- Full screenshots/video/logs: Firebase Console > Test Lab > Test history"
+            echo "- Raw results path: bastion-kern-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+            echo ""
+            echo "A passing Robo crawl is a smoke test, not proof of Mapbox tile validity, live USGS accuracy, battery life or heat."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload test metadata and CLI log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: firebase-testlab-run-metadata
+          path: |
+            testlab-result.log
+            testlab-device.txt
+            testlab-apk-sha256.txt
+          if-no-files-found: warn
+          retention-days: 7
