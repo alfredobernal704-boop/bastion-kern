@@ -62,6 +62,7 @@ private sealed interface FeedState {
     data class Failed(val reason: String) : FeedState
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun BastionScreen() {
     val context = LocalContext.current
