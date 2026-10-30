@@ -23,15 +23,23 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - uses: android-actions/setup-android@v3
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - name: Test and compile
+      - name: Validate source registration
+        run: |
+          test -f app/src/main/java/app/bastionkern/MainActivity.kt
+          test -f app/src/main/java/app/bastionkern/SeismicFeed.kt
+          test -f app/src/test/java/app/bastionkern/SeismicFeedTest.kt
+          echo "Android module sources are present."
+      - name: Install Android SDK 35 and compile
         if: env.MAPBOX_DOWNLOADS_TOKEN != ''
-        run: gradle --no-daemon testDebugUnitTest assembleDebug
+        run: |
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+          gradle --no-daemon testDebugUnitTest assembleDebug
       - name: Report blocked build if Mapbox secret absent
         if: env.MAPBOX_DOWNLOADS_TOKEN == ''
         run: |
-          echo "::warning::Android build NOT executed: MAPBOX_DOWNLOADS_TOKEN secret not configured."
-          echo "Set MAPBOX_DOWNLOADS_TOKEN in repository Actions secrets to activate builds."
+          echo "::warning::Android compilation NOT run: MAPBOX_DOWNLOADS_TOKEN secret is not configured."
+          echo "Source structure checks passed. Set MAPBOX_DOWNLOADS_TOKEN to enable SDK resolution and build."

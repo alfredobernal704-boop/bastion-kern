@@ -44,4 +44,5 @@ dependencies {
     implementation("com.mapbox.maps:android-ndk27:11.34.1")
     implementation("com.mapbox.extension:maps-compose-ndk27:11.34.1")
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.json:json:20240303")
 }
