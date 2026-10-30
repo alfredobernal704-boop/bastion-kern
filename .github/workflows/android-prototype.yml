@@ -83,8 +83,8 @@ jobs:
             echo "Verified Firebase Android configuration for bastion-sdk/app.bastionkern (no values disclosed)."
           fi
 
-      - name: Test Firebase configuration validator
-        run: python3 -m unittest discover -s scripts -p 'test_verify_firebase_config.py' -v
+      - name: Test Firebase Android and iOS registration validators
+        run: python3 -m unittest discover -s scripts -p 'test_verify_firebase*.py' -v
 
       - name: Install Android SDK 35
         shell: bash
