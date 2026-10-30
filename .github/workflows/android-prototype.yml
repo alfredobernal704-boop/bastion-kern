@@ -26,18 +26,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Require scoped Mapbox tokens
+      - name: Require Mapbox Maven download token
         shell: bash
         run: |
           if [[ ! "${MAPBOX_DOWNLOADS_TOKEN:-}" == sk.* ]]; then
             echo "::error::MAPBOX_DOWNLOADS_TOKEN is absent or not an sk.* secret. Add a Mapbox token with Downloads:Read in GitHub Actions repository secrets."
             exit 1
           fi
+          echo "Mapbox Maven secret is configured (value not printed)."
           if [[ ! "${MAPBOX_PUBLIC_TOKEN:-}" == pk.* ]]; then
-            echo "::error::MAPBOX_PUBLIC_TOKEN repository variable is absent or not a public pk.* token."
-            exit 1
+            echo "::warning::MAPBOX_PUBLIC_TOKEN repository variable is missing; APK may compile but live maps will require a pk.* token."
           fi
-          echo "Token types configured. Token values are not printed."
 
       - name: Verify Mapbox Maven authentication and SDK artefact
         shell: bash
