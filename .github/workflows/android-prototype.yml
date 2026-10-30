@@ -87,9 +87,17 @@ jobs:
         run: python3 -m unittest discover -s scripts -p 'test_verify_firebase_config.py' -v
 
       - name: Install Android SDK 35
+        shell: bash
         run: |
-          yes | sdkmanager --licenses >/dev/null || true
-          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+          set -euo pipefail
+          sdk_root="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
+          sdkmanager_path="$(find "$sdk_root/cmdline-tools" -type f -name sdkmanager -print -quit)"
+          if [[ -z "$sdkmanager_path" ]]; then
+            echo "::error::Android SDK command-line tools not found in $sdk_root."
+            exit 1
+          fi
+          yes | "$sdkmanager_path" --licenses > /dev/null || true
+          "$sdkmanager_path" "platforms;android-35" "build-tools;35.0.0"
 
       - name: Resolve dependencies, run unit tests, compile APK
         run: gradle --no-daemon --stacktrace :app:testDebugUnitTest :app:assembleDebug
