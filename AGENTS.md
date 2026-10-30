@@ -14,7 +14,7 @@ and https://github.com/firebase/agent-skills:
 - `firebase-auth-basics` for Email/Password provider and user session flows.
 - `firebase-firestore` for database edition detection, data model and Android SDK use.
 - `firestore-rules-creation` (or authorised rules subagent) for all security rules authoring.
-- `firestore-security-rules-auditor` if available for final rule review.
+- `firebase-security-rules-auditor` or `firestore-security-rules-auditor` if available for final rule review.
 
 Use the project’s actual authenticated Firebase MCP connection or Firebase CLI.
 If neither is connected, prepare code but **report registration, provider
@@ -32,3 +32,17 @@ activation, database provisioning and rules deployment as pending**.
 - User passwords are only handled by Firebase Auth; never store them in Firestore.
 - Distinguish USGS reported earthquake records from earthquake early warning.
 - Preserve the unrelated public website and the main branch until CI validation.
+
+## Verified Firebase app registrations (uploaded files, 2026-10-30)
+
+The submitted Android config belongs to **Bastionkern.com**, which is NOT the
+Android applicationId **app.bastionkern** in this repository. Do not copy it
+to the Android module or rewrite applicationId to accommodate it. Register
+app.bastionkern in the existing bastion-sdk project and retrieve its config.
+
+The submitted iOS plist belongs to **Bastionkern.offentlogspot.com**, but no
+iOS SwiftUI target exists in this repository yet. Validate the eventual target
+bundle identifier before importing the plist.
+
+Never commit keys or contents of either uploaded configuration to the repo.
+See android/docs/FIREBASE-REGISTRATION-AUDIT.md.
