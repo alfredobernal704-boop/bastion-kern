@@ -1,15 +1,21 @@
 name: Android first-mobile prototype
+
 on:
   push:
+    branches:
+      - main
+      - feature/android-first-mobile-foundation-20261030
     paths:
       - 'android/**'
       - '.github/workflows/android-prototype.yml'
-  pull_request:
-    paths:
-      - 'android/**'
-      - '.github/workflows/android-prototype.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
 jobs:
   android:
+    name: Authenticated Mapbox Maven + Android build
     runs-on: ubuntu-latest
     env:
       MAPBOX_DOWNLOADS_TOKEN: ${{ secrets.MAPBOX_DOWNLOADS_TOKEN }}
@@ -19,27 +25,62 @@ jobs:
         working-directory: android
     steps:
       - uses: actions/checkout@v4
+
+      - name: Require scoped Mapbox tokens
+        shell: bash
+        run: |
+          if [[ ! "${MAPBOX_DOWNLOADS_TOKEN:-}" == sk.* ]]; then
+            echo "::error::MAPBOX_DOWNLOADS_TOKEN is absent or not an sk.* secret. Add a Mapbox token with Downloads:Read in GitHub Actions repository secrets."
+            exit 1
+          fi
+          if [[ ! "${MAPBOX_PUBLIC_TOKEN:-}" == pk.* ]]; then
+            echo "::error::MAPBOX_PUBLIC_TOKEN repository variable is absent or not a public pk.* token."
+            exit 1
+          fi
+          echo "Token types configured. Token values are not printed."
+
+      - name: Verify Mapbox Maven authentication and SDK artefact
+        shell: bash
+        run: |
+          # This is the published NDK27 SDK coordinate, not a fabricated /health endpoint.
+          url="https://api.mapbox.com/downloads/v2/releases/maven/com/mapbox/maps/android-ndk27/11.34.1/android-ndk27-11.34.1.pom"
+          status="$(curl --silent --show-error --location --output /dev/null \
+            --connect-timeout 10 --max-time 40 --retry 2 \
+            --write-out '%{http_code}' \
+            --user "mapbox:${MAPBOX_DOWNLOADS_TOKEN}" "$url")"
+          if [[ "$status" != "200" ]]; then
+            echo "::error::Mapbox Maven authentication / artefact check failed (HTTP $status). For 401/403 verify Downloads:Read and token validity; for 404 verify coordinates."
+            exit 1
+          fi
+          echo "Mapbox Maven authenticated HTTP 200 for android-ndk27 11.34.1 POM."
+
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
+
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - name: Validate source registration
+
+      - name: Validate Android source files
         run: |
           test -f app/src/main/java/app/bastionkern/MainActivity.kt
           test -f app/src/main/java/app/bastionkern/SeismicFeed.kt
           test -f app/src/test/java/app/bastionkern/SeismicFeedTest.kt
-          echo "Android module sources are present."
-      - name: Install Android SDK 35 and compile
-        if: env.MAPBOX_DOWNLOADS_TOKEN != ''
+
+      - name: Install Android SDK 35
         run: |
           yes | sdkmanager --licenses >/dev/null || true
           sdkmanager "platforms;android-35" "build-tools;35.0.0"
-          gradle --no-daemon testDebugUnitTest assembleDebug
-      - name: Report blocked build if Mapbox secret absent
-        if: env.MAPBOX_DOWNLOADS_TOKEN == ''
-        run: |
-          echo "::warning::Android compilation NOT run: MAPBOX_DOWNLOADS_TOKEN secret is not configured."
-          echo "Source structure checks passed. Set MAPBOX_DOWNLOADS_TOKEN to enable SDK resolution and build."
+
+      - name: Resolve dependencies, run unit tests, compile APK
+        run: gradle --no-daemon --stacktrace :app:testDebugUnitTest :app:assembleDebug
+
+      - name: Publish debug APK (only after verified build)
+        uses: actions/upload-artifact@v4
+        with:
+          name: bastion-kern-android-debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 7
