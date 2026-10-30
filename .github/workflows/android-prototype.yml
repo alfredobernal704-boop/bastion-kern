@@ -26,17 +26,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Require Mapbox Maven download token
+      - name: Require scoped Mapbox tokens
         shell: bash
         run: |
           if [[ ! "${MAPBOX_DOWNLOADS_TOKEN:-}" == sk.* ]]; then
             echo "::error::MAPBOX_DOWNLOADS_TOKEN is absent or not an sk.* secret. Add a Mapbox token with Downloads:Read in GitHub Actions repository secrets."
             exit 1
           fi
-          echo "Mapbox Maven secret is configured (value not printed)."
           if [[ ! "${MAPBOX_PUBLIC_TOKEN:-}" == pk.* ]]; then
-            echo "::warning::MAPBOX_PUBLIC_TOKEN repository variable is missing; APK may compile but live maps will require a pk.* token."
+            echo "::error::MAPBOX_PUBLIC_TOKEN repository variable is absent or not a public pk.* token."
+            exit 1
           fi
+          echo "Token types configured. Token values are not printed."
 
       - name: Verify Mapbox Maven authentication and SDK artefact
         shell: bash
@@ -70,14 +71,8 @@ jobs:
 
       - name: Install Android SDK 35
         run: |
-          sdk_root="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
-          sdkmanager_path="$(find "$sdk_root/cmdline-tools" -type f -name sdkmanager -print -quit)"
-          if [[ -z "$sdkmanager_path" ]]; then
-            echo "::error::Android SDK command-line tools (sdkmanager) not found."
-            exit 1
-          fi
-          yes | "$sdkmanager_path" --licenses >/dev/null || true
-          "$sdkmanager_path" "platforms;android-35" "build-tools;35.0.0"
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
       - name: Resolve dependencies, run unit tests, compile APK
         run: gradle --no-daemon --stacktrace :app:testDebugUnitTest :app:assembleDebug
