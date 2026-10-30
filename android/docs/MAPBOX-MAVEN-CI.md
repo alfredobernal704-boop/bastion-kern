@@ -17,7 +17,7 @@ The `MAPBOX_PUBLIC_TOKEN` value begins with `pk.` and is used by the built Andro
 2. In the GitHub repository `alfredobernal704-boop/bastion-kern`, open **Settings > Secrets and variables > Actions**.
 3. Under **Repository secrets**, create `MAPBOX_DOWNLOADS_TOKEN` and paste the `sk.*` token directly in the GitHub UI.
 4. Under **Repository variables**, create `MAPBOX_PUBLIC_TOKEN` with an appropriate `pk.*` token (subject to domain/URL restrictions compatible with native Android).
-5. Go to **Actions > Android first-mobile prototype > Run workflow** and choose the feature branch.
+5. Open the failed [authenticated-build run](https://github.com/alfredobernal704-boop/bastion-kern/actions/runs/41066664872) and select **Re-run all jobs** after saving both values. Since the workflow currently exists only on a feature branch, the manual **Run workflow** button may not appear until the workflow is on the default branch.
 6. Confirm log step **Verify Mapbox Maven authentication and SDK artefact** reports HTTP 200, then the Gradle test / assemble steps pass and the debug APK artifact is published.
 
 ## Current CI behaviour
