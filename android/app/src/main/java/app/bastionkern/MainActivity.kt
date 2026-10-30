@@ -76,6 +76,7 @@ private fun BastionScreen() {
     var selected by remember { mutableStateOf<Earthquake?>(null) }
     var feedState by remember { mutableStateOf<FeedState>(FeedState.Loading) }
     val scope = rememberCoroutineScope()
+    var showAccount by remember { mutableStateOf(false) }
 
     suspend fun refresh() {
         feedState = FeedState.Loading
@@ -148,6 +149,9 @@ private fun BastionScreen() {
                     }
                     TextButton(onClick = { scope.launch { refresh() } }) {
                         Text("Refresh", color = Gold)
+                    }
+                    TextButton(onClick = { showAccount = true }) {
+                        Text("Account", color = Gold)
                     }
                 }
             }
@@ -250,6 +254,14 @@ private fun BastionScreen() {
                     "Reported earthquakes only · Not early warning or prediction",
                     color = TextSecondary, style = MaterialTheme.typography.labelSmall
                 )
+            }
+        }
+        if (showAccount) {
+            ModalBottomSheet(
+                onDismissRequest = { showAccount = false },
+                containerColor = Panel
+            ) {
+                FirebaseAccountPanel()
             }
         }
     }
