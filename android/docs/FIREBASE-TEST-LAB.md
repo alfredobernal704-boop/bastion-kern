@@ -57,6 +57,6 @@ Quotas: Firebase Spark includes up to **5 physical-device test runs/day** (and u
 Official guides:
 - https://firebase.google.com/docs/test-lab/android/firebase-console
 - https://firebase.google.com/docs/test-lab/android/robo-ux-test
-- https://firebase.google.com/docs/test-lab/android/usage-quotas-pricing
+- https://firebase.google.com/docs/test-lab/usage-quotas-pricing
 - https://firebase.google.com/docs/test-lab/android/iam-permissions-reference
 - https://github.com/google-github-actions/auth
