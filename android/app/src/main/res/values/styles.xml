@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.BastionKern" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">#081421</item>
+        <item name="android:navigationBarColor">#081421</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+</resources>

@@ -1,0 +1,37 @@
+name: Android first-mobile prototype
+on:
+  push:
+    paths:
+      - 'android/**'
+      - '.github/workflows/android-prototype.yml'
+  pull_request:
+    paths:
+      - 'android/**'
+      - '.github/workflows/android-prototype.yml'
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    env:
+      MAPBOX_DOWNLOADS_TOKEN: ${{ secrets.MAPBOX_DOWNLOADS_TOKEN }}
+      MAPBOX_PUBLIC_TOKEN: ${{ vars.MAPBOX_PUBLIC_TOKEN }}
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Test and compile
+        if: env.MAPBOX_DOWNLOADS_TOKEN != ''
+        run: gradle --no-daemon testDebugUnitTest assembleDebug
+      - name: Report blocked build if Mapbox secret absent
+        if: env.MAPBOX_DOWNLOADS_TOKEN == ''
+        run: |
+          echo "::warning::Android build NOT executed: MAPBOX_DOWNLOADS_TOKEN secret not configured."
+          echo "Set MAPBOX_DOWNLOADS_TOKEN in repository Actions secrets to activate builds."
