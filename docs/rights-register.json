@@ -1,0 +1,108 @@
+{
+  "reviewed_at": "2026-10-22",
+  "scope": "Captured evaluation, not a compliance certification",
+  "active_sources": [
+    "USGS",
+    "NASA EONET",
+    "GDACS",
+    "MET Norway"
+  ],
+  "logos": [
+    {
+      "provider": "NASA",
+      "status": "permission_required",
+      "render_logo": false,
+      "basis": "https://www.nasa.gov/nasa-brand-center/brand-guidelines/"
+    },
+    {
+      "provider": "USGS",
+      "status": "prior_written_permission_required",
+      "render_logo": false,
+      "basis": "https://www.usgs.gov/information-policies-and-instructions/usgs-visual-identity-system"
+    },
+    {
+      "provider": "GDACS",
+      "status": "usage_scope_unverified",
+      "render_logo": false,
+      "basis": "https://gdacs.org/About/termofuse.aspx"
+    },
+    {
+      "provider": "MET Norway",
+      "status": "download_available_usage_scope_unverified",
+      "render_logo": false,
+      "basis": "https://www.met.no/om-oss/logo"
+    }
+  ],
+  "data_notices": [
+    {
+      "provider": "USGS",
+      "rights": "US public domain for USGS-produced material; third-party exceptions",
+      "url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+    },
+    {
+      "provider": "NASA EONET",
+      "rights": "Metadata and originating assets assessed separately",
+      "url": "https://eonet.gsfc.nasa.gov/"
+    },
+    {
+      "provider": "GDACS",
+      "rights": "Specific GDACS terms; review item-level ownership and EU reuse notice",
+      "url": "https://gdacs.org/About/termofuse.aspx"
+    },
+    {
+      "provider": "MET Norway",
+      "rights": "CC BY 4.0 / NLOD where applicable; attribution and changes required",
+      "url": "https://api.met.no/doc/License"
+    }
+  ],
+  "blocking": [
+    "Legal contracting identity and service address not verified",
+    "Commercial privacy notice, processor roles and retention not completed",
+    "No evidenced trademark clearance or registration",
+    "No investment instrument or jurisdictional offering review",
+    "No verified production payment, cancellation or refund flow"
+  ],
+  "unknown": [
+    "Full ownership and assignment chain",
+    "Provider logo permissions",
+    "Infrastructure log retention and transfer arrangements"
+  ],
+  "unexamined": [
+    "Trademark register searches and conflict opinions",
+    "Company and tax records",
+    "Payment account readiness",
+    "Penetration testing and live service reliability",
+    "Country-by-country product launch requirements"
+  ],
+  "norms": {
+    "blocking": [
+      "RESOLVER_URL_REJECTED"
+    ],
+    "unknown": [],
+    "unexamined": true,
+    "limitations": [
+      "NORMS_CORE_NOT_CALLED"
+    ],
+    "certification": false
+  },
+  "headers": {
+    "meta_csp": "implemented",
+    "static_headers_file": "provided; host enforcement must be verified",
+    "server_authorisation": "Sites audience is separate from local evaluation acceptance"
+  },
+  "contact": "Offentlogspot@gmail.com",
+  "publication_name": "Alfredo Zarate | Welsh",
+  "site_presentation": {
+    "status": "Cooming Soon",
+    "screenshot_scope": "creator-supplied product design, no current-conditions claim",
+    "billing": "none",
+    "fonts": "system",
+    "motion": "CSS transitions; respects reduced-motion"
+  },
+  "retired_from_deployment": [
+    "GSAP",
+    "ScrollTrigger",
+    "Cabinet font files",
+    "historical PDF/Word downloads"
+  ]
+}
