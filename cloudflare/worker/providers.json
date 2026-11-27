@@ -1,1 +1,97 @@
-{"registry_version":"1.0.0","status":"engineering-candidate-register","providers":[{"provider_id":"usgs","name":"USGS Earthquake Hazards","integration_status":"in_development","adapter":"implemented","terms_review":"required_before_production","endpoint":"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"},{"provider_id":"nasa_eonet","name":"NASA EONET","integration_status":"in_development","adapter":"implemented","terms_review":"originating_asset_review_required","endpoint":"https://eonet.gsfc.nasa.gov/api/v3/events"},{"provider_id":"nasa_firms","name":"NASA FIRMS","integration_status":"in_development","adapter":"optional_secret_required","terms_review":"required_before_production","endpoint":"https://firms.modaps.eosdis.nasa.gov/"},{"provider_id":"nasa_gibs","name":"NASA GIBS","integration_status":"not_started","adapter":"map_tile_layer_not_event_feed","terms_review":"product_specific"},{"provider_id":"noaa_nws","name":"NOAA / National Weather Service","integration_status":"in_development","adapter":"implemented","terms_review":"endpoint_policy_review_required","endpoint":"https://api.weather.gov/alerts/active"},{"provider_id":"gdacs","name":"Global Disaster Alert and Coordination System","integration_status":"in_development","adapter":"rss_implemented","terms_review":"terms_and_source_lineage_review_required","endpoint":"https://www.gdacs.org/xml/rss.xml"},{"provider_id":"met_norway","name":"MET Norway","integration_status":"not_started","adapter":"location_forecast_context_not_global_event_feed","terms_review":"attribution_and_endpoint_policy_review_required","endpoint":"https://api.met.no/"},{"provider_id":"copernicus","name":"ESA / Copernicus","integration_status":"not_started","adapter":"dataset_selection_required","terms_review":"dataset_specific"}],"notice":"Engineering candidates only; no provider endorsement, commercial-use permission, legal clearance, or successful live ingestion is implied."}
+{
+  "registry_version": "1.0.0",
+  "status": "engineering-candidate-register",
+  "providers": [
+    {
+      "provider_id": "usgs",
+      "name": "USGS Earthquake Hazards",
+      "integration_status": "in_development",
+      "adapter": "implemented",
+      "terms_review": "required_before_production",
+      "endpoint": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
+    },
+    {
+      "provider_id": "nasa_eonet",
+      "name": "NASA EONET",
+      "integration_status": "in_development",
+      "adapter": "implemented",
+      "terms_review": "originating_asset_review_required",
+      "endpoint": "https://eonet.gsfc.nasa.gov/api/v3/events"
+    },
+    {
+      "provider_id": "nasa_firms",
+      "name": "NASA FIRMS",
+      "integration_status": "in_development",
+      "adapter": "optional_secret_required",
+      "terms_review": "required_before_production",
+      "endpoint": "https://firms.modaps.eosdis.nasa.gov/"
+    },
+    {
+      "provider_id": "nasa_gibs",
+      "name": "NASA GIBS",
+      "integration_status": "not_started",
+      "adapter": "map_tile_layer_not_event_feed",
+      "terms_review": "product_specific"
+    },
+    {
+      "provider_id": "noaa_nws",
+      "name": "NOAA / National Weather Service",
+      "integration_status": "in_development",
+      "adapter": "implemented",
+      "terms_review": "endpoint_policy_review_required",
+      "endpoint": "https://api.weather.gov/alerts/active"
+    },
+    {
+      "provider_id": "gdacs",
+      "name": "Global Disaster Alert and Coordination System",
+      "integration_status": "in_development",
+      "adapter": "rss_implemented",
+      "terms_review": "terms_and_source_lineage_review_required",
+      "endpoint": "https://www.gdacs.org/xml/rss.xml"
+    },
+    {
+      "provider_id": "met_norway",
+      "name": "MET Norway",
+      "integration_status": "not_started",
+      "adapter": "location_forecast_context_not_global_event_feed",
+      "terms_review": "attribution_and_endpoint_policy_review_required",
+      "endpoint": "https://api.met.no/"
+    },
+    {
+      "provider_id": "copernicus",
+      "name": "ESA / Copernicus",
+      "integration_status": "not_started",
+      "adapter": "dataset_selection_required",
+      "terms_review": "dataset_specific"
+    },
+    {
+      "provider_id": "nasa_earthdata",
+      "name": "NASA Earthdata",
+      "integration_status": "not_started",
+      "adapter": "dataset_access_layer",
+      "terms_review": "product_specific"
+    },
+    {
+      "provider_id": "nasa_lance",
+      "name": "NASA LANCE",
+      "integration_status": "not_started",
+      "adapter": "near_real_time_dataset_catalogue",
+      "terms_review": "product_specific"
+    },
+    {
+      "provider_id": "nasa_gpm_imerg",
+      "name": "NASA GPM IMERG",
+      "integration_status": "not_started",
+      "adapter": "precipitation_product_not_event_feed",
+      "terms_review": "product_specific"
+    },
+    {
+      "provider_id": "gdelt",
+      "name": "GDELT Project",
+      "integration_status": "not_started",
+      "adapter": "geolocated_news_context_only",
+      "terms_review": "source_reliability_and_terms_review_required"
+    }
+  ],
+  "notice": "Engineering candidates only; no provider endorsement, commercial-use permission, legal clearance, or successful live ingestion is implied."
+}
