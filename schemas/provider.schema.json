@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bastion-kern.app/schemas/provider.schema.json",
+  "title": "BASTION-KERN provider registry entry",
+  "description": "Governance metadata for an external data provider or dataset. A registry entry is not proof of an active integration.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "provider_id",
+    "name",
+    "authority_class",
+    "integration_status",
+    "review_status"
+  ],
+  "properties": {
+    "provider_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]{1,119}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "operator": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "dataset_or_api": {
+      "type": "string",
+      "maxLength": 240
+    },
+    "authority_class": {
+      "type": "string",
+      "enum": [
+        "official_authority",
+        "scientific_sensor",
+        "news_agency",
+        "local_media",
+        "community",
+        "unknown"
+      ]
+    },
+    "data_categories": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 80
+      },
+      "uniqueItems": true
+    },
+    "endpoint": {
+      "type": "string",
+      "format": "uri"
+    },
+    "documentation_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "terms_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "licence_name": {
+      "type": "string",
+      "maxLength": 160
+    },
+    "licence_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "attribution_text": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "rate_limit_notes": {
+      "type": "string",
+      "maxLength": 2000
+    },
+    "freshness_expectation": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "geometry_contract": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "commercial_use_reviewed": {
+      "type": "boolean",
+      "default": false
+    },
+    "retention_reviewed": {
+      "type": "boolean",
+      "default": false
+    },
+    "integration_status": {
+      "type": "string",
+      "enum": [
+        "not_started",
+        "in_development",
+        "configured",
+        "verified",
+        "paused",
+        "retired"
+      ]
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "conditional",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "review_owner": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 4000
+    }
+  }
+}
