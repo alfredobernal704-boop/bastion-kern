@@ -45,27 +45,24 @@ flowchart LR
 
 | Path | Purpose |
 |---|---|
-| `docs/architecture/` | System boundaries, data flow, and component responsibilities |
-| `docs/data/` | Provider governance, provenance, and attribution requirements |
-| `docs/security/` | Threat model and security assumptions |
-| `docs/governance/` | Intellectual property and licensing policy |
-| `docs/engineering/` | Roadmap and engineering controls |
-| `docs/geospatial/` | CRS, GeoJSON, and coordinate contracts |
-| `schemas/` | Machine-readable data contracts |
-| `scripts/` | Repository validation utilities |
-| `.github/workflows/` | Automated repository checks |
+| docs/architecture/ | System boundaries, data flow, and component responsibilities |
+| docs/data/ | Provider governance, provenance, and attribution requirements |
+| docs/security/ | Threat model and security assumptions |
+| docs/governance/ | Intellectual property and licensing policy |
+| docs/engineering/ | Roadmap and engineering controls |
+| docs/geospatial/ | CRS, GeoJSON, and coordinate contracts |
+| schemas/ | Machine-readable data contracts |
+| cloudflare/worker/ | Cloudflare Workers ingestion API, provider adapters and D1 migration |
+| scripts/ | Repository validation utilities |
+| .github/workflows/ | Automated repository checks |
 
 Start with the [documentation index](docs/README.md).
 
 ## Technology and integrations
 
-The product's current design direction includes React/TypeScript, Mapbox geospatial rendering, and Supabase where a project is configured. The exact production stack, deployment topology, and service ownership must be confirmed against the active application and infrastructure before they are described as deployed.
+The engineering branch contains an initial Cloudflare Workers + D1 ingestion implementation. Provider coverage and deployment status are documented in [Cloudflare ingestion](docs/engineering/cloudflare-ingestion.md). D1 is not PostGIS; spatial analysis and geofencing are not implemented by this Worker.
 
-- [Backend integration boundary](docs/architecture/backend-integration.md)
-- [Provider and data governance](docs/data/source-governance.md)
-- [Geospatial coordinate contract](docs/geospatial/coordinate-reference-systems.md)
-
-No AWS dependency is assumed by this reference architecture. No new Supabase project or production database is created by repository documentation.
+The product's client design direction includes React/TypeScript and Mapbox geospatial rendering. The exact production client, deployment topology, and service ownership must be confirmed against the active application and infrastructure before they are described as deployed.
 
 ## Data and trust model
 
@@ -96,9 +93,9 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Contribut
 
 ## Quality checks
 
-The repository baseline runs a lightweight validation workflow for JSON contracts and required engineering documentation. It does **not** claim to build or test the application until the application source root and its actual toolchain are verified.
+The repository baseline runs a lightweight validation workflow for JSON contracts and required engineering documentation. The Cloudflare Worker has a separate TypeScript validation workflow. Neither workflow is a production deployment or operational certification.
 
-Run locally:
+Run repository checks locally:
 
 ```bash
 python scripts/validate_repository.py
