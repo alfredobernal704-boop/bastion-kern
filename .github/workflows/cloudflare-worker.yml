@@ -1,0 +1,30 @@
+name: Cloudflare worker validation
+on:
+  pull_request:
+    paths:
+      - "cloudflare/worker/**"
+      - ".github/workflows/cloudflare-worker.yml"
+  push:
+    branches: ["feature/cloudflare-provider-ingestion-2026-11"]
+    paths:
+      - "cloudflare/worker/**"
+      - ".github/workflows/cloudflare-worker.yml"
+permissions:
+  contents: read
+concurrency:
+  group: cloudflare-worker-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: cloudflare/worker
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-node@1e60f620b9541f04c4c44b7c8c8f6b3a3d8b6c2d
+        with:
+          node-version: 22
+      - run: npm install --ignore-scripts
+      - run: npm run typecheck
