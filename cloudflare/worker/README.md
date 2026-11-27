@@ -16,9 +16,9 @@
 | NOAA/NWS | Adapter implemented | Active alerts; polygon alerts reduced to centroid for point storage |
 | GDACS | RSS adapter implemented | No geometry inferred from text |
 | NASA FIRMS | Optional adapter | Requires server-side NASA_FIRMS_MAP_KEY; detections are not confirmed perimeters |
-| NASA GIBS | Map-layer candidate | Imagery/tile service, not an event feed |
+| NASA GIBS / Earthdata / LANCE | Dataset and map-layer candidates | Imagery and near-real-time dataset access, not one canonical event feed |
 | MET Norway | Context candidate | Forecast API is location-query based, not a global hazard-event feed |
-| ESA/Copernicus | Dataset-specific | Select exact product and review its terms before implementation |
+| NASA GPM IMERG | Dataset-specific | Precipitation estimates; requires product-level processing and validation |\n| ESA/Copernicus | Dataset-specific | Select exact product and review its terms before implementation |\n| GDELT | Candidate only | Geolocated news context; never treat news as authoritative hazard detection |
 
 The provider catalogue is not endorsement, rights clearance or proof of a live connection. No provider logos are included. Review rights and attribution before production use.
 
