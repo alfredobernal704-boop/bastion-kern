@@ -1,0 +1,9 @@
+export interface D1Result<T=Record<string,unknown>> { results:T[]; success:boolean; meta?:Record<string,unknown>; }
+export interface D1PreparedStatement { bind(...values:unknown[]):D1PreparedStatement; run<T=Record<string,unknown>>():Promise<D1Result<T>>; all<T=Record<string,unknown>>():Promise<D1Result<T>>; }
+export interface D1Database { prepare(query:string):D1PreparedStatement; }
+export interface ScheduledController { scheduledTime:number; cron:string; }
+export interface ExecutionContext { waitUntil(promise:Promise<unknown>):void; passThroughOnException():void; }
+export interface Env { EVENTS_DB:D1Database; INGEST_TOKEN?:string; NASA_FIRMS_MAP_KEY?:string; USER_AGENT?:string; }
+export interface CanonicalEvent { schema_version:"1.0.0";event_id:string;domain:"global"|"local";category:"seismic"|"severe_weather"|"hydrological"|"wildfire"|"geological"|"environmental"|"infrastructure"|"public_disruption"|"other";title:string;summary?:string;severity?:"informational"|"low"|"moderate"|"high"|"critical"|"unknown";verification:"verified"|"corroborated"|"preliminary"|"unconfirmed"|"unknown";confidence?:number;lifecycle:"active"|"updated"|"resolved"|"withdrawn"|"unknown";geometry?:{type:"Point";coordinates:[number,number]}|null;location_name?:string;timestamps:{source_observed_at?:string;source_published_at?:string;source_updated_at?:string;ingested_at:string;last_seen_at?:string};provenance:{provider_id:string;source_record_id:string;source_url?:string;terms_url?:string;attribution?:string;source_crs?:string;source_axis_order?:string;transformation_version?:string};availability:"live"|"delayed"|"unavailable"|"historical"|"unknown";tags?:string[]; }
+export interface ProviderResult {provider_id:string;events:CanonicalEvent[];fetched_at:string;status:"ok"|"skipped"|"error";message?:string;}
+export interface ProviderAdapter {id:string;fetch(env:Env):Promise<ProviderResult>;}

@@ -1,0 +1,13 @@
+name = "bastion-kern-ingestion"
+main = "src/index.ts"
+compatibility_date = "2026-11-27"
+workers_dev = true
+[triggers]
+crons = ["*/15 * * * *"]
+[[d1_databases]]
+binding = "EVENTS_DB"
+database_name = "bastion-kern-events"
+database_id = "REPLACE_WITH_CLOUDFLARE_D1_DATABASE_ID"
+migrations_dir = "migrations"
+[vars]
+USER_AGENT = "BASTION-KERN/0.1 (OFFENTLOGSPOT; attribution retained)"
